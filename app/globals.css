@@ -15,7 +15,22 @@
 }
 
 body {
+  display: flex;
+  min-height: 100vh;
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0; /* Remove default margin for consistent layout */
+}
+
+.sidebar {
+  width: 250px; /* Set the width of the sidebar */
+  flex-shrink: 0; /* Prevent the sidebar from shrinking */
+  background-color: #f5f5f5; /* Light background for sidebar */
+  border-right: 1px solid #ccc; /* Optional: Add a border to separate the sidebar */
+}
+
+.main-content {
+  flex: 1; /* Take the remaining space */
+  padding: 1rem; /* Add some spacing around the main content */
 }
