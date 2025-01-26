@@ -15,12 +15,12 @@ interface IProfileEntry {
 }
 interface IUserProfile {
   name: IProfileEntry;
-  phoneNumber: IProfileEntry;
+  phone_number: IProfileEntry;
   address: IProfileEntry;
   province: IProfileEntry;
   country: IProfileEntry;
   profession: IProfileEntry;
-  maritalStatus: IProfileEntry;
+  marital_status: IProfileEntry;
 }
 
 const DEFAULT_PROFILE: IUserProfile = {
@@ -28,7 +28,7 @@ const DEFAULT_PROFILE: IUserProfile = {
     value: 'John Doe',
     label: 'Name',
   },
-  phoneNumber: {
+  phone_number: {
     value: '123-456-7890',
     label: 'Phone Number',
   },
@@ -48,7 +48,7 @@ const DEFAULT_PROFILE: IUserProfile = {
     value: 'Software Engineer',
     label: 'Profession',
   },
-  maritalStatus: {
+  marital_status: {
     value: 'Single',
     label: 'Marital Status',
   },
@@ -57,14 +57,33 @@ const DEFAULT_PROFILE: IUserProfile = {
 const ProfileCard = ({ email }: IProfileCardProps) => {
   const [userProfile, setUserProfile] = useState<IUserProfile>(clone(DEFAULT_PROFILE));
   const [profileDraft, setProfileDraft] = useState<IUserProfile>(clone(DEFAULT_PROFILE));
-  const fields = ['name', 'phoneNumber', 'address', 'province', 'country', 'profession', 'maritalStatus'];
+  const fields = ['name', 'phone_number', 'address', 'province', 'country', 'profession', 'marital_status'];
   const [isEditing, setIsEditing] = useState(false);
   const startEditing = () => {
     setProfileDraft(clone(userProfile));
     setIsEditing(true);
   };
-  const handleSave = () => {
+  const handleSave = async () => {
     setIsEditing(false);
+    const updatingData: { [key: string]: string } = {};
+    fields.forEach(field => {
+      updatingData[field] = profileDraft[field as keyof IUserProfile].value;
+    });
+    updatingData.email = email;
+    console.log(updatingData);
+    const response = await fetch('/api/user_profiles', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ user_profile: updatingData }),
+    });
+    if (!response.ok) {
+      console.error('Failed to save profile');
+      return;
+    } else {
+      console.log('Profile saved');
+    }
     setUserProfile(clone(profileDraft));
   };
   const handleCancel = () => {
