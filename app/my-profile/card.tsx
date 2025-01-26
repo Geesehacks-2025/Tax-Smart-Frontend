@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { PencilLineIcon } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import Image from 'next/image';
@@ -25,31 +25,31 @@ interface IUserProfile {
 
 const DEFAULT_PROFILE: IUserProfile = {
   name: {
-    value: 'John Doe',
+    value: '',
     label: 'Name',
   },
   phone_number: {
-    value: '123-456-7890',
+    value: '',
     label: 'Phone Number',
   },
   address: {
-    value: '1234 Elm St',
+    value: '',
     label: 'Address',
   },
   province: {
-    value: 'Ontario',
+    value: '',
     label: 'Province',
   },
   country: {
-    value: 'Canada',
+    value: '',
     label: 'Country',
   },
   profession: {
-    value: 'Software Engineer',
+    value: '',
     label: 'Profession',
   },
   marital_status: {
-    value: 'Single',
+    value: '',
     label: 'Marital Status',
   },
 };
@@ -59,6 +59,30 @@ const ProfileCard = ({ email }: IProfileCardProps) => {
   const [profileDraft, setProfileDraft] = useState<IUserProfile>(clone(DEFAULT_PROFILE));
   const fields = ['name', 'phone_number', 'address', 'province', 'country', 'profession', 'marital_status'];
   const [isEditing, setIsEditing] = useState(false);
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch('/api/user_profiles/show');
+      if (!response.ok) {
+        console.error('Failed to fetch profile');
+        return;
+      } else {
+        const data = await response.json();
+        console.log(data, data.name);
+        const newProfile = {
+          name: { ...DEFAULT_PROFILE.name, value: data.name },
+          phone_number: { ...DEFAULT_PROFILE.phone_number, value: data.phone_number },
+          address: { ...DEFAULT_PROFILE.address, value: data.address },
+          province: { ...DEFAULT_PROFILE.province, value: data.province },
+          country: { ...DEFAULT_PROFILE.country, value: data.country },
+          profession: { ...DEFAULT_PROFILE.profession, value: data.profession },
+          marital_status: { ...DEFAULT_PROFILE.marital_status, value: data.marital_status },
+        };
+        setProfileDraft(clone(newProfile));
+        setUserProfile(clone(newProfile));
+      }
+    };
+    fetchData();
+  }, []);
   const startEditing = () => {
     setProfileDraft(clone(userProfile));
     setIsEditing(true);
@@ -88,7 +112,7 @@ const ProfileCard = ({ email }: IProfileCardProps) => {
   };
   const handleCancel = () => {
     setIsEditing(false);
-    setProfileDraft(clone(DEFAULT_PROFILE));
+    setProfileDraft(clone(userProfile));
   };
   const handleInput = (field: keyof IUserProfile) => (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.value, field);
