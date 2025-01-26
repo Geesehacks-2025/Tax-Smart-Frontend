@@ -28,7 +28,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <TitleBar />
-        <main className="mt-16 z-0">{children}</main>
+        <main className="mt-16 z-0 w-full">{children}</main>
         <VoiceFlowChatbot />
       </body>
     </html>

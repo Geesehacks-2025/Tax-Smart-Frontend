@@ -1,3 +1,8 @@
+import Card from './card';
 export default function MyProfile() {
-  return <div>my profile here</div>;
+  return (
+    <div>
+      <Card email="john.doe@example.com" />
+    </div>
+  );
 }
