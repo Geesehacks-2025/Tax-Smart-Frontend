@@ -27,9 +27,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <TitleBar />
-        <div className="flex flex-col min-h-screen">
-          <main className="flex-1">{children}</main>
-        </div>
+        <main className="mt-16 z-0">{children}</main>
       </body>
     </html>
   );

@@ -18,7 +18,7 @@ const TitleBar = () => {
   };
 
   return (
-    <nav className="w-full fixed bg-gray50 text-black shadow-lg">
+    <nav className="z-50 w-full fixed top-0 left-0 bg-gray-50 text-black shadow-lg">
       <div className="w-full mx-auto px-4 justify-between flex">
         <div className="flex flex-start h-16">
           {/* Left - Menu Dropdown */}
