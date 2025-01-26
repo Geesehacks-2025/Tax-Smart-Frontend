@@ -5,6 +5,8 @@ import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // Import styles for tooltips
 import { Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+// import background from 'app/tax-analytics/dinero-spanish-money-lettering.jpg';
+// import background from './dinero-spanish-money-lettering.jpg';
 
 // Registering the chart.js components
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -60,8 +62,15 @@ export default function TaxAnalytics() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col justify-between py-10 px-4 sm:px-8 font-sans">
-      <h1 className="text-3xl font-bold mb-6 text-black text-center">Tax Analytics</h1>
+    <div
+      className="min-h-screen bg-gray-100 flex flex-col justify-between py-10 px-4 sm:px-8 font-sans"
+      style={{
+        backgroundImage: 'url(/dinero-spanish-money-lettering.jpg)',
+        backgroundSize: 'cover', // Ensures the image covers the screen
+        backgroundPosition: 'center', // Centers the image
+        backgroundAttachment: 'fixed', // Optional: makes the background fixed as you scroll
+      }}>
+      <h1 className="text-4xl font-bold mb-6 text-white text-center">Tax Analytics</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl mx-auto">
         {/* Input Form */}

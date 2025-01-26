@@ -41,7 +41,10 @@ const TitleBar = () => {
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/tax-reminder" className="block px-4 py-2 text-gray-800 hover:bg-blue-50">
+                  <Link
+                    href="https://app.appsmith.com/app/tax-reminder-calendar/page1-67959f5089175b1b0e24e8e7"
+                    target="_blank"
+                    className="block px-4 py-2 text-gray-800 hover:bg-blue-50">
                     Tax Reminder
                   </Link>
                 </DropdownMenuItem>
