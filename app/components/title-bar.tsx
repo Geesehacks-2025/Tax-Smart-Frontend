@@ -30,22 +30,22 @@ const TitleBar = () => {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start">
-                <DropdownMenuItem>
+                <DropdownMenuItem asChild>
                   <Link href="/my-profile" className="block px-4 py-2 text-gray-800 hover:bg-blue-50">
                     My Profile
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem>
+                <DropdownMenuItem asChild>
                   <Link href="/tax-analytics" className="block px-4 py-2 text-gray-800 hover:bg-blue-50">
                     Tax Analytics
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem>
+                <DropdownMenuItem asChild>
                   <Link href="/tax-reminder" className="block px-4 py-2 text-gray-800 hover:bg-blue-50">
                     Tax Reminder
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem>
+                <DropdownMenuItem asChild>
                   <Link href="my-content-studio" className="block px-4 py-2 text-gray-800 hover:bg-blue-50">
                     My Content Studio
                   </Link>

@@ -1,3 +1,3 @@
 export default function MyContentStudio() {
-  return <div>my content studio</div>;
+  return <div>My content studio</div>;
 }

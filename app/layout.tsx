@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import TitleBar from './components/title-bar';
+import VoiceFlowChatbot from './components/voiceflowchatbot';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -28,6 +29,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <TitleBar />
         <main className="mt-16 z-0">{children}</main>
+        <VoiceFlowChatbot />
       </body>
     </html>
   );
