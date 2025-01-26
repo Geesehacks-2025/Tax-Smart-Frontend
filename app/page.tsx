@@ -39,7 +39,9 @@ export default function Home() {
           Tax Analytics
         </Link>
         <Link
-          href="/tax-reminder"
+          href="https://app.appsmith.com/app/tax-reminder-calendar/page1-67959f5089175b1b0e24e8e7"
+          target="_blank"
+          rel="noopener noreferrer"
           className="bg-yellow-100 text-blue-700 font-semibold py-2 px-6 rounded-lg shadow-md hover:bg-yellow-200">
           Tax Reminder
         </Link>
